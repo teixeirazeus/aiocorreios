@@ -54,7 +54,7 @@ class Correios:
         response = await self.session.get(url)
         if response.status != 200:
             raise Exception(f'Error: {response.status}')
-        
+
         body = await response.text()
         frete_json = xmltodict.parse(body)
 
