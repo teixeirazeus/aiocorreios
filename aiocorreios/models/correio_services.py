@@ -1,0 +1,12 @@
+
+class Services:
+    """
+    Services class
+    """
+    SERVICE_PAC = "04669"
+    SERVICE_PAC_INDUSTRIAL = "04812"
+    SERVICE_SEDEX = "04162"
+    SERVICE_SEDEX_INDUSTRIAL = "04316"
+    SERVICE_SEDEX10 = "40215"
+    SERVICE_SEDEX12 = "40169"
+    SERVICE_E_SEDEX = "81019"
