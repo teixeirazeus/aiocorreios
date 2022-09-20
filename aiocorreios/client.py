@@ -1,4 +1,6 @@
 from typing import List
+from .data_util import DataUtil
+from .models.freight import Freight
 from .url_util import UrlUtil
 from .models.zipcodes import Zipcodes
 from .models.package import Package
@@ -56,6 +58,24 @@ class Correios:
             raise Exception(f'Error: {response.status}')
 
         body = await response.text()
-        frete_json = xmltodict.parse(body)
+        freight_data = self._get_freigth_data(body)
+        freight = self._create_freigth(freight_data)
 
-        return frete_json
+        return freight
+    
+    def _get_freigth_data(self, body: str) -> dict:
+        result_dict = xmltodict.parse(body)
+        return result_dict['Servicos']['cServico']
+
+    def _create_freigth(self, freight_data: dict) -> Freight:
+        return Freight(
+            codigo=freight_data['Codigo'],
+            valor=DataUtil.to_decimal(freight_data['Valor']),
+            prazo_entrega=freight_data['PrazoEntrega'],
+            valor_sem_adicionais=DataUtil.to_decimal(freight_data['ValorSemAdicionais']),
+            valor_mao_propria=DataUtil.to_decimal(freight_data['ValorMaoPropria']),
+            valor_aviso_recebimento=DataUtil.to_decimal(freight_data['ValorAvisoRecebimento']),
+            valor_valor_declarado=DataUtil.to_decimal(freight_data['ValorValorDeclarado']),
+            entrega_domiciliar=freight_data['EntregaDomiciliar'] == "S",
+            entrega_sabado=freight_data['EntregaSabado'] == "S",
+        )

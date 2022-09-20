@@ -12,7 +12,9 @@ async def main():
         width=30.0, heigth=30.0, length=30.0, diameter=0, weight=1)
     value = 50
     result = await correios.calculate_freight(zipcodes, package, [Services.SERVICE_SEDEX], value)
+
     print(result)
+    correios.close()
 
 
 loop = asyncio.get_event_loop()
