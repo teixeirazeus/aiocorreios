@@ -64,10 +64,16 @@ class Correios:
         return freight
     
     def _get_freigth_data(self, body: str) -> dict:
+        """
+        Parse the xml response.
+        """
         result_dict = xmltodict.parse(body)
         return result_dict['Servicos']['cServico']
 
     def _create_freigth(self, freight_data: dict) -> Freight:
+        """
+        Create a Freight object.
+        """
         return Freight(
             codigo=freight_data['Codigo'],
             valor=DataUtil.to_decimal(freight_data['Valor']),
