@@ -14,7 +14,7 @@ async def main():
     result = await correios.calculate_freight(zipcodes, package, [Services.SERVICE_SEDEX], value)
 
     print(result)
-    correios.close()
+    await correios.close()
 
 
 loop = asyncio.get_event_loop()
