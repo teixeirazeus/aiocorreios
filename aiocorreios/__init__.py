@@ -1,6 +1,6 @@
-# from .aio_correios_frete import AioWaifuPyClient
-# from .waifupy_client import WaifuPyClient
-# from .waifu_category import WaifuCategory
+from .client import Correios
+from . import models
 
 __author__ = 'teixeirazeus'
 __version__ = '1.0.0'
+__licence__ = 'MIT'

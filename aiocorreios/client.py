@@ -62,7 +62,7 @@ class Correios:
         freight = self._create_freigth(freight_data)
 
         return freight
-    
+
     def _get_freigth_data(self, body: str) -> dict:
         """
         Parse the xml response.
@@ -78,10 +78,14 @@ class Correios:
             codigo=freight_data['Codigo'],
             valor=DataUtil.to_decimal(freight_data['Valor']),
             prazo_entrega=freight_data['PrazoEntrega'],
-            valor_sem_adicionais=DataUtil.to_decimal(freight_data['ValorSemAdicionais']),
-            valor_mao_propria=DataUtil.to_decimal(freight_data['ValorMaoPropria']),
-            valor_aviso_recebimento=DataUtil.to_decimal(freight_data['ValorAvisoRecebimento']),
-            valor_valor_declarado=DataUtil.to_decimal(freight_data['ValorValorDeclarado']),
+            valor_sem_adicionais=DataUtil.to_decimal(
+                freight_data['ValorSemAdicionais']),
+            valor_mao_propria=DataUtil.to_decimal(
+                freight_data['ValorMaoPropria']),
+            valor_aviso_recebimento=DataUtil.to_decimal(
+                freight_data['ValorAvisoRecebimento']),
+            valor_valor_declarado=DataUtil.to_decimal(
+                freight_data['ValorValorDeclarado']),
             entrega_domiciliar=freight_data['EntregaDomiciliar'] == "S",
             entrega_sabado=freight_data['EntregaSabado'] == "S",
         )
