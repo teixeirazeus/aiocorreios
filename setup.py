@@ -1,8 +1,9 @@
 import re
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open('aiocorreios/__init__.py', 'r', encoding="utf-8") as f:
-    version = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
+    version = re.search(
+        r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
 
 with open('README.md', 'r', encoding="utf-8") as f:
     readme = f.read()
@@ -10,7 +11,7 @@ with open('README.md', 'r', encoding="utf-8") as f:
 setup(
     name='aiocorreios',
     version=version,
-    packages=['aiocorreios'],
+    packages=find_packages(),
     url='https://github.com/teixeirazeus/aiocorreios',
     project_urls={
         'Issue tracker': 'https://github.com/teixeirazeus/aiocorreios/issues'
