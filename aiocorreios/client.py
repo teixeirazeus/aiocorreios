@@ -30,7 +30,7 @@ class Correios:
                                 path: Zipcodes,
                                 package: Package,
                                 services: List[str],
-                                value: float) -> dict:
+                                value: float) -> Freight:
         """
         Method to calculate the freight.
         """
@@ -59,6 +59,10 @@ class Correios:
 
         body = await response.text()
         freight_data = self._get_freigth_data(body)
+
+        if freight_data["Erro"] != "0":
+            raise Exception(f'Error: {freight_data["MsgErro"]}')
+
         freight = self._create_freigth(freight_data)
 
         return freight
