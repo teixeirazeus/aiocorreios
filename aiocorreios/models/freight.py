@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from decimal import Decimal
 
+
 @dataclass
 class Freight:
     codigo: str

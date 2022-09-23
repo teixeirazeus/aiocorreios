@@ -3,7 +3,9 @@ from setuptools import setup, find_packages
 
 with open('aiocorreios/__init__.py', 'r', encoding="utf-8") as f:
     version = re.search(
-        r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE).group(1)
+        r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]',
+        f.read(),
+        re.MULTILINE).group(1)
 
 with open('README.md', 'r', encoding="utf-8") as f:
     readme = f.read()
