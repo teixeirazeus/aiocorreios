@@ -4,10 +4,10 @@
 Asynchronous correios client.
 
 # About
-Correios uses soap web service, which is bloated and slow.
+Correios employs SOAP (Simple Object Access Protocol) web service, which is bloated and slow.
 
 Other python modules that I've looked for on the internet are either bloated or just don't work.
 
-Asynchronous calls are amazing in performance and your server will thank you.
+Harnessing the power of asynchronous calls can significantly enhance performance, resulting in a more responsive server infrastructure.
 
 So I created this module on top of aiohttp. Focusing on the most common uses, when using Correios services.
